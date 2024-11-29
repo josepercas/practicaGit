@@ -33,7 +33,7 @@
             this.chkUrgente = new System.Windows.Forms.CheckBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblCoste = new System.Windows.Forms.Label();
-            this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnCalcularPrecio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTelegrama
@@ -83,22 +83,23 @@
             this.lblCoste.TabIndex = 4;
             this.lblCoste.Text = "Coste";
             // 
-            // btnCalcular
+            // btnCalcularPrecio
             // 
-            this.btnCalcular.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCalcular.Location = new System.Drawing.Point(440, 297);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(169, 57);
-            this.btnCalcular.TabIndex = 5;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = false;
+            this.btnCalcularPrecio.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnCalcularPrecio.Location = new System.Drawing.Point(440, 297);
+            this.btnCalcularPrecio.Name = "btnCalcularPrecio";
+            this.btnCalcularPrecio.Size = new System.Drawing.Size(169, 57);
+            this.btnCalcularPrecio.TabIndex = 5;
+            this.btnCalcularPrecio.Text = "Calcular";
+            this.btnCalcularPrecio.UseVisualStyleBackColor = false;
+            this.btnCalcularPrecio.Click += new System.EventHandler(this.btnCalcularPrecio_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnCalcular);
+            this.Controls.Add(this.btnCalcularPrecio);
             this.Controls.Add(this.lblCoste);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.chkUrgente);
@@ -118,7 +119,7 @@
         private System.Windows.Forms.CheckBox chkUrgente;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblCoste;
-        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Button btnCalcularPrecio;
     }
 }
 
