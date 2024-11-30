@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,30 +21,25 @@ namespace ejercicioTelegrama
         private void btnCalcularPrecio_Click(object sender, EventArgs e)
         {
                 string textoTelegrama;
-                char tipoTelegrama = ' ';
                 int numPalabras = 0;
                 double coste;
 
                 //Leo el telegrama.
                 textoTelegrama = txtTelegrama.Text;
                 // telegrama urgente?
-                if (chkUrgente.Checked)
-                {
-                    tipoTelegrama = 'u';
-                }
-                else
-                {
-                    tipoTelegrama = 'o';
-                }
+
                 //Separo las palabras del texto.
                 string[] palabras = textoTelegrama.Split(' ');
                 //Obtengo el número de palabras que forma el telegrama
-                numPalabras = textoTelegrama.Length;
+                numPalabras = palabras.Length;
 
-                //Si el telegrama es ordinario 
-                if (tipoTelegrama != 'u')
+            //Si el telegrama NO está vacío 
+            if (!(textoTelegrama.Equals("")))
+            {
+                //Si el telegrama es ordinario
+                if (rdbOrdinario.Checked == true)
                 {
-                    if (numPalabras <= 10)
+                    if (numPalabras <= 10 && numPalabras > 0)
                     {
                         coste = 2.5;
                     }
@@ -55,23 +51,41 @@ namespace ejercicioTelegrama
                 else
                 //Si el telegrama es urgente 
                 {
-                    if (tipoTelegrama == 'u')
+                    if (numPalabras <= 10)
                     {
-                        if (numPalabras <= 10)
-                        {
-                            coste = 5;
-                        }
-                        else
-                        {
-                            coste = 5 + 0.75 * (numPalabras - 10);
-                        }
+                        coste = 5;
                     }
                     else
                     {
-                        coste = 0;
+                        coste = 5 + 0.75 * (numPalabras - 10);
                     }
                 }
-                txtPrecio.Text = coste.ToString() + " euros";
+            }
+            else
+            {
+                coste = 0;
+            }
+            txtPrecio.Text = coste.ToString() + " euros";
+        }
+
+        private void rdbOrdinario_CheckedChanged(object sender, EventArgs e)
+        {
+            //Si marco ordinario debo desmarcar urgente
+            if (rdbOrdinario.Checked)
+            {
+                rdbUrgente.Checked = false;
+            }
+            
+        }
+
+        private void rdbUrgente_CheckedChanged(object sender, EventArgs e)
+        {
+            //Si marco urgente debo desmarcar ordinario
+            if (rdbUrgente.Checked)
+            {
+                rdbOrdinario.Checked = false;
+
+            }
         }
     }
 }
